@@ -2,7 +2,6 @@
   "version": 2,
   "buildCommand": "echo 'Static deployment - no build needed'",
   "installCommand": "echo 'No dependencies needed'",
-  "framework": "static",
   "regions": ["sfo1"],
   "env": {},
   "public": true,
