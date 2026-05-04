@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "buildCommand": "echo 'Static deployment - no build needed'",
+  "installCommand": "echo 'No dependencies needed'",
+  "framework": "static",
+  "regions": ["sfo1"],
+  "env": [],
+  "public": true,
+  "github": {
+    "enabled": true,
+    "autoAlias": true,
+    "silent": false,
+    "autoJobCancelPendingOnPush": true,
+    "autoExposeSystemEnvs": false,
+    "protected": [],
+    "skipDeploymentDialogue": false
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
