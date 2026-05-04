@@ -136,7 +136,6 @@
             cursor: grabbing;
         }
 
-        /* 優先度による左枠線 */
         .task-card.priority-high {
             border-left: 5px solid #ef4444;
         }
@@ -149,7 +148,6 @@
             border-left: 5px solid #22c55e;
         }
 
-        /* ボール所有者による背景 */
         .task-card.ball-me {
             background: rgba(102, 126, 234, 0.05);
         }
@@ -308,6 +306,31 @@
             color: #0891b2;
         }
 
+        .task-buttons {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .task-buttons button {
+            flex: 1;
+            padding: 6px 8px;
+            font-size: 11px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .edit-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background: #5568d3;
+        }
+
         .ball-menu {
             position: absolute;
             bottom: 0;
@@ -336,41 +359,6 @@
 
         .ball-menu-item:hover {
             background: #f3f4f6;
-        }
-
-        .task-buttons {
-            display: flex;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        .task-btn {
-            flex: 1;
-            padding: 6px 10px;
-            border: none;
-            border-radius: 4px;
-            background: #667eea;
-            color: white;
-            cursor: pointer;
-            font-size: 11px;
-            transition: all 0.2s ease;
-        }
-
-        .task-btn:hover {
-            background: #5568d3;
-            transform: translateY(-1px);
-        }
-
-        .task-btn.edit {
-            background: #667eea;
-        }
-
-        .task-btn.delete {
-            background: #ef4444;
-        }
-
-        .task-btn.delete:hover {
-            background: #dc2626;
         }
 
         .button-group {
@@ -415,33 +403,6 @@
             margin-bottom: 10px;
         }
 
-        .add-task-form {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .add-task-form input,
-        .add-task-form select,
-        .add-task-form textarea {
-            width: 100%;
-            margin-bottom: 8px;
-            padding: 8px;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            font-size: 12px;
-            font-family: inherit;
-        }
-
-        .add-task-form textarea {
-            min-height: 60px;
-            resize: none;
-        }
-
-        .add-task-form button {
-            margin: 0;
-        }
-
         .floating-action {
             position: fixed;
             bottom: 30px;
@@ -484,99 +445,73 @@
             display: flex;
         }
 
-        .modal-dialog {
+        .modal-content {
             background: white;
-            border-radius: 12px;
             padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .modal-header {
             font-size: 20px;
-            font-weight: 600;
-            color: #333;
+            font-weight: bold;
             margin-bottom: 20px;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
         }
 
         .form-group {
             margin-bottom: 15px;
         }
 
-        .form-label {
+        .form-group label {
             display: block;
-            font-size: 13px;
+            margin-bottom: 5px;
             font-weight: 600;
             color: #333;
-            margin-bottom: 6px;
+            font-size: 13px;
         }
 
-        .form-input,
-        .form-select {
+        .form-group input,
+        .form-group select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #d1d5db;
+            border: 1px solid #e5e7eb;
             border-radius: 6px;
             font-size: 13px;
             font-family: inherit;
-            transition: border-color 0.2s ease;
         }
 
-        .form-input:focus,
-        .form-select:focus {
+        .form-group input:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
-        .modal-buttons {
+        .modal-footer {
             display: flex;
             gap: 10px;
-            margin-top: 25px;
         }
 
-        .modal-btn {
+        .modal-footer button {
             flex: 1;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            padding: 10px;
         }
 
-        .modal-btn.primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .modal-btn.primary:hover {
-            background: #5568d3;
-            transform: translateY(-1px);
-        }
-
-        .modal-btn.secondary {
+        .modal-footer button.cancel {
             background: #e5e7eb;
             color: #333;
         }
 
-        .modal-btn.secondary:hover {
+        .modal-footer button.cancel:hover {
             background: #d1d5db;
         }
 
@@ -592,21 +527,11 @@
             .stats {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .task-buttons {
-                gap: 4px;
-            }
-
-            .task-btn {
-                font-size: 10px;
-                padding: 5px 8px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- ヘッダー -->
         <div class="header">
             <h1>⚽ ボール管理 TODO ダッシュボード</h1>
             <div class="date" id="today"></div>
@@ -631,49 +556,42 @@
             </div>
         </div>
 
-        <!-- ボード -->
         <div class="boards-container" id="boardsContainer">
-            <!-- ボードはJavaScriptで生成 -->
         </div>
     </div>
 
-    <!-- 新規タスク追加フローティングボタン -->
     <button class="floating-action" id="addTaskBtn">+</button>
 
     <!-- 編集モーダル -->
     <div class="modal-overlay" id="editModal">
-        <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">タスクを編集</div>
-            <form id="editForm">
+            <div class="modal-body">
                 <div class="form-group">
-                    <label class="form-label">タイトル</label>
-                    <input type="text" class="form-input" id="editTitle" required>
+                    <label>タイトル</label>
+                    <input type="text" id="editTitle" placeholder="タスク名を入力">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">期限</label>
-                    <input type="date" class="form-input" id="editDeadline" required>
+                    <label>期限</label>
+                    <input type="date" id="editDeadline">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">優先度</label>
-                    <select class="form-select" id="editPriority">
+                    <label>優先度</label>
+                    <select id="editPriority">
                         <option value="high">高</option>
                         <option value="medium">中</option>
                         <option value="low">低</option>
                     </select>
                 </div>
-                <div class="modal-buttons">
-                    <button type="button" class="modal-btn secondary" id="editCancel">キャンセル</button>
-                    <button type="submit" class="modal-btn primary">保存</button>
-                </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel" id="cancelEditBtn">キャンセル</button>
+                <button id="saveEditBtn">保存</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // ============================================
-        // データ管理
-        // ============================================
-
         const DEFAULT_TASKS = [
             {
                 id: 1,
@@ -742,6 +660,7 @@
         class TodoBallApp {
             constructor() {
                 this.tasks = this.loadTasks();
+                this.editingTaskId = null;
                 this.boards = [
                     { id: 'high', label: '🔴 優先度: 高', class: 'high' },
                     { id: 'medium', label: '🟡 優先度: 中', class: 'medium' },
@@ -749,7 +668,6 @@
                     { id: 'waiting', label: '⏳ 対応待ち', class: 'waiting' },
                     { id: 'reminder', label: '📢 リマインド', class: 'reminder' }
                 ];
-                this.editingTaskId = null;
                 this.init();
             }
 
@@ -758,6 +676,7 @@
                 this.render();
                 this.setupEventListeners();
                 this.updateStats();
+                this.setupModal();
             }
 
             loadTasks() {
@@ -880,12 +799,11 @@
                         </div>
                     </div>
                     <div class="task-buttons">
-                        <button class="task-btn edit" data-task-id="${task.id}">✏️ 編集</button>
-                        <button class="task-btn delete" data-task-id="${task.id}">🗑️ 削除</button>
+                        <button class="edit-btn" data-task-id="${task.id}">✏️ 編集</button>
                     </div>
                 `;
 
-                // ドラッグイベント
+                // ドラッグ機能
                 taskDiv.addEventListener('dragstart', (e) => {
                     e.dataTransfer.effectAllowed = 'move';
                     e.dataTransfer.setData('taskId', task.id);
@@ -896,7 +814,7 @@
                     taskDiv.classList.remove('dragging');
                 });
 
-                // ボール所有者クリック
+                // ボールインジケータ
                 const ballIndicator = taskDiv.querySelector('.ball-indicator');
                 ballIndicator.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -904,16 +822,15 @@
                 });
 
                 // 編集ボタン
-                const editBtn = taskDiv.querySelector('.task-btn.edit');
+                const editBtn = taskDiv.querySelector('.edit-btn');
                 editBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     this.openEditModal(task);
                 });
 
-                // 削除ボタン
-                const deleteBtn = taskDiv.querySelector('.task-btn.delete');
-                deleteBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                // 右クリック削除
+                taskDiv.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
                     if (confirm(`"${task.title}" を削除しますか？`)) {
                         this.deleteTask(task.id);
                     }
@@ -935,17 +852,29 @@
                 this.editingTaskId = null;
             }
 
-            saveEditedTask(title, deadline, priority) {
+            saveEdit() {
+                if (!this.editingTaskId) return;
+
                 const task = this.tasks.find(t => t.id === this.editingTaskId);
                 if (!task) return;
 
-                task.title = title;
-                task.deadline = deadline;
-                task.priority = priority;
+                const newTitle = document.getElementById('editTitle').value.trim();
+                const newDeadline = document.getElementById('editDeadline').value;
+                const newPriority = document.getElementById('editPriority').value;
 
-                // 優先度が変わった場合、セクションを更新
-                if (task.ball === 'me') {
-                    task.section = priority;
+                if (!newTitle || !newDeadline) {
+                    alert('タイトルと期限を入力してください');
+                    return;
+                }
+
+                task.title = newTitle;
+                task.deadline = newDeadline;
+                const oldPriority = task.priority;
+                task.priority = newPriority;
+
+                // ボール所有者が「自分」の場合、優先度変更に応じてセクションを更新
+                if (task.ball === 'me' && oldPriority !== newPriority) {
+                    task.section = newPriority;
                 }
 
                 this.saveTasks();
@@ -986,7 +915,6 @@
 
                 task.ball = newBall;
 
-                // セクション更新ロジック
                 if (newBall === 'me') {
                     task.section = task.priority;
                 } else {
@@ -1038,8 +966,23 @@
                 document.getElementById('urgentTasks').textContent = urgentTasks;
             }
 
+            setupModal() {
+                document.getElementById('saveEditBtn').addEventListener('click', () => {
+                    this.saveEdit();
+                });
+
+                document.getElementById('cancelEditBtn').addEventListener('click', () => {
+                    this.closeEditModal();
+                });
+
+                document.getElementById('editModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'editModal') {
+                        this.closeEditModal();
+                    }
+                });
+            }
+
             setupEventListeners() {
-                // ドロップ領域
                 for (const board of this.boards) {
                     const tasksList = document.getElementById(`tasks-${board.id}`);
                     if (tasksList) {
@@ -1068,7 +1011,6 @@
                     }
                 }
 
-                // 新規タスク追加ボタン
                 document.getElementById('addTaskBtn').addEventListener('click', () => {
                     const title = prompt('タスク名を入力:');
                     if (!title) return;
@@ -1079,31 +1021,9 @@
 
                     this.addTask(title, description, deadline, priority);
                 });
-
-                // 編集モーダルのイベント
-                const editForm = document.getElementById('editForm');
-                editForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const title = document.getElementById('editTitle').value;
-                    const deadline = document.getElementById('editDeadline').value;
-                    const priority = document.getElementById('editPriority').value;
-                    this.saveEditedTask(title, deadline, priority);
-                });
-
-                document.getElementById('editCancel').addEventListener('click', () => {
-                    this.closeEditModal();
-                });
-
-                // モーダルのオーバーレイをクリックして閉じる
-                document.getElementById('editModal').addEventListener('click', (e) => {
-                    if (e.target === document.getElementById('editModal')) {
-                        this.closeEditModal();
-                    }
-                });
             }
         }
 
-        // アプリ初期化
         const app = new TodoBallApp();
     </script>
 </body>
