@@ -4,7 +4,7 @@
   "installCommand": "echo 'No dependencies needed'",
   "framework": "static",
   "regions": ["sfo1"],
-  "env": [],
+  "env": {},
   "public": true,
   "github": {
     "enabled": true,
